@@ -1,5 +1,5 @@
-streamlit>=1.52.1 
-openai>=1.109.1
-guardrails-ai>=0.7.0
 git+https://github.com/guardrails-ai/detect_pii.git
 git+https://github.com/tryolabs/restricttotopic.git
+streamlit
+openai
+guardrails-ai
