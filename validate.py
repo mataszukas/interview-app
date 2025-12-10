@@ -1,7 +1,13 @@
 from typing import Tuple
 from guardrails import Guard
-from guardrails.hub import DetectPII, RestrictToTopic
 import streamlit as st
+import os
+
+os.system("guardrails hub install hub://tryolabs/restricttotopic")
+os.system("guardrails hub install hub://guardrails/detect_pii")
+
+from guardrails.hub import RestrictToTopic
+from guardrails.hub import DetectPII
 
 @st.cache_resource
 def get_guards():
