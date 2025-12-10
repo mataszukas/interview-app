@@ -1,11 +1,15 @@
 from typing import Tuple
-from guardrails import Guard
+from guardrails import Guard, configure
 import streamlit as st
 import os
 
-guardrails_api_key = st.secrets["GUARDRAILS_API_KEY"]
-
-os.system("guardrails configure --enable-remote-inferencing --enable-metrics --token {guardrails_api_key}")
+API = st.secrets["GUARDRAILS_API_KEY"]
+ 
+configure(
+    enable_remote_inference=True,
+    enable_guardrails_hub=True,
+    api_key=API,
+)
 os.system("guardrails hub install hub://tryolabs/restricttotopic")
 os.system("guardrails hub install hub://guardrails/detect_pii")
 
