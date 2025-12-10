@@ -3,10 +3,12 @@ from guardrails import Guard
 import streamlit as st
 import os
 
-os.system("guardrails hub install hub://tryolabs/restricttotopic")
-os.system("guardrails hub install hub://guardrails/detect_pii")
 guardrails_api_key = st.secrets["GUARDRAILS_API_KEY"]
 os.environ["GUARDRAILS_API_KEY"] = guardrails_api_key
+
+os.system("guardrails hub install hub://tryolabs/restricttotopic")
+os.system("guardrails hub install hub://guardrails/detect_pii")
+
 
 from guardrails.hub import RestrictToTopic
 from guardrails.hub import DetectPII
