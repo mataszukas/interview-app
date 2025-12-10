@@ -1,5 +1,5 @@
 from typing import Tuple
-from guardrails import Guard, configure
+from guardrails import Guard
 import streamlit as st
 import os
 
