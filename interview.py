@@ -3,7 +3,7 @@ import openai
 import os
 from typing import Tuple
 from datetime import datetime, timedelta
-from validate import validate_input
+# from validate import validate_input
 from prompts import SYSTEM_PROMPT
 
 def check_rate_limit() -> Tuple[bool, str]:
@@ -43,11 +43,11 @@ if st.button("(Re-)Start Interview"):
     if not user_name or not job_role:
         st.error("Please enter both your name and the job role.")
     else:
-        name_valid, name_error = validate_input(user_name)
-        role_valid, role_error = validate_input(job_role)
-        if not name_valid or not role_valid:
-            st.error(f"Guardrail violation: {name_error} {role_error}")
-            st.stop()
+        # name_valid, name_error = validate_input(user_name)
+        # role_valid, role_error = validate_input(job_role)
+        # if not name_valid or not role_valid:
+        #     st.error(f"Guardrail violation: {name_error} {role_error}")
+        #     st.stop()
 
         # Set session state for interview
         st.session_state.system_prompt = system_prompt
@@ -104,9 +104,9 @@ if 'user_name' in st.session_state:
         if not time_valid:
             st.warning(f"Rate limit exceeded. Please wait {time_left} minutes before trying again.")
             st.info(f"Your rate limit will reset at {st.session_state.rate_limit['reset_time'].strftime('%H:%M:%S')}.")
-        is_valid, error_message = validate_input(prompt.text if hasattr(prompt, 'text') else str(prompt))
-        if not is_valid:
-            st.error(f"Guardrail violation: {error_message}")
+        # is_valid, error_message = validate_input(prompt.text if hasattr(prompt, 'text') else str(prompt))
+        # if not is_valid:
+        #     st.error(f"Guardrail violation: {error_message}")
         visible_content = ""
         api_content = ""
         
