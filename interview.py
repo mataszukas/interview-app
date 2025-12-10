@@ -31,7 +31,7 @@ client = openai.OpenAI(api_key=api_key)
 
 st.set_page_config(page_title="Mock Interview with AI", page_icon="🤖")
 st.title("Practice Job Interviews with AI")
-st.text("This app allows you to practice job interview questions with an AI interviewer. Simply enter your name and the job role you are applying for to get started.")
+st.text("This app allows you to practice job interview questions with an AI interviewer. Simply enter your name, job role you are applying and AI interviewer style to get started.")
 st.text("**NOTE**: Do not share any personal identifiable information (PII) such as your full name, address, phone number, or any sensitive data during the interview.")
 st.text("Streamlit does not support guardrails validation at the moment, so please be cautious.")
 
