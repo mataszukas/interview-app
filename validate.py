@@ -6,6 +6,7 @@ import os
 guardrails_api_key = st.secrets["GUARDRAILS_API_KEY"]
 os.environ["GUARDRAILS_API_KEY"] = guardrails_api_key
 
+os.system("guardrails configure $GUARDRAILS_API_KEY")
 os.system("guardrails hub install hub://tryolabs/restricttotopic")
 os.system("guardrails hub install hub://guardrails/detect_pii")
 
