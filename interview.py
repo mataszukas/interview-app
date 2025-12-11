@@ -39,6 +39,7 @@ st.text("Streamlit does not support guardrails validation at the moment, so plea
 user_name = st.text_input("Enter your name:")
 job_role = st.text_input("Enter the job role you are applying for:")
 system_prompt = st.selectbox("Select System Prompts", ["Zero-Shot", "Few-Shot", "Chain-of-Thought", "Least-to-Most", "Generated Knowledge"])
+temperature = st.slider("Response Creativity (Temperature)", 0.0, 1.0, 0.4, 0.1)
 
 # Start the interview process
 if st.button("(Re-)Start Interview"):
@@ -55,6 +56,7 @@ if st.button("(Re-)Start Interview"):
         st.session_state.system_prompt = system_prompt
         st.session_state.user_name = user_name
         st.session_state.job_role = job_role
+        st.session_state.temperature = temperature
         st.session_state.openai_model = "gpt-4.1-nano-2025-04-14"
         # Initialize messages with proper format for OpenAI API
         system_message = SYSTEM_PROMPT[system_prompt.lower().replace(" ", "-")](job_role, user_name)
@@ -71,7 +73,7 @@ if st.button("(Re-)Start Interview"):
         response = client.chat.completions.create(
             model=st.session_state.openai_model,
             messages=st.session_state.api_messages,
-            temperature=0.4,
+            temperature=st.session_state.temperature,
             max_completion_tokens=200
         )
 
